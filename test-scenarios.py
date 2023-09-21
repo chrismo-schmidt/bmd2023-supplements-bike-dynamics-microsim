@@ -18,10 +18,6 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
 import matplotlib
 
-
-
-from time import time
-
 #own packages
 from cyclistsocialforce.vehicle import UnStableBicycle, StableBicycle
 from cyclistsocialforce.intersection import SocialForceIntersection
