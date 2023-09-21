@@ -38,7 +38,7 @@ black = 'black'
 gray = 'gray'
 
 #output directory
-outdir = os.getcwd()
+outdir = './figures/'
 
     
 def scenario_passing(fig, axes, unstable):
@@ -791,7 +791,7 @@ def main():
     """
     
     #set to true to save output
-    save = False
+    save = True
     
     #selectors
     run_step_response = True
@@ -829,7 +829,8 @@ def main():
 
         if save:
             plt.figure(fig.number)
-            plt.savefig('test-scenarios.pdf', dpi=300, format='pdf')
+            plt.savefig(os.path.join(outdir,'test-scenarios.pdf'), 
+                        dpi=300, format='pdf')
                    
         fig_crossing = plot_lateral_deviation(dev1, dev2, t, save=save)
    
