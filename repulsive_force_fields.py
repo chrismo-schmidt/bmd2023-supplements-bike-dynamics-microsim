@@ -12,8 +12,19 @@ import matplotlib.pyplot as plt
 import os
 
 from cyclistsocialforce.vehicle import UnStableBicycle
+from pypaperutils.design import figure_for_latex
+from pypaperutils.io import export_to_pgf
 
 def config_matplotlib_for_latex(save=True):
+    ''' Presets of matplotlib for beautiul latex plots
+    
+    Parameters
+    ----------
+    save : boolean, optional
+        Flag indicating if 2D bicycles or inverted pendulum bicycles should be
+        simulated. True = inv. pendulum. False = 2D bicycles. 
+    '''
+    
     if save:
         matplotlib.use("pgf")
     else:
@@ -32,6 +43,26 @@ def config_matplotlib_for_latex(save=True):
     plt.close("all")
     
 def plot_force_direction(ax, X, Y, Fx, Fy):
+    '''Create a quiver plot that shows the direction of the force plots. 
+
+    Parameters
+    ----------
+    ax : axes
+        Axes to plot in.
+    X : TYPE
+        X-location where the force field is evaluated.
+    Y : TYPE
+        Y-location where the force field is evaluated.
+    Fx : TYPE
+        X-component of the force at the locations X.
+    Fy : TYPE
+        Y-component of the force at the locations Y.
+
+    Returns
+    -------
+    None.
+
+    '''
     Fx = Fx[::10,::10]
     Fy = Fy[::10,::10]
     X = X[::10,::10]
@@ -43,29 +74,35 @@ def plot_force_direction(ax, X, Y, Fx, Fy):
     ax.quiver(X,Y, Fx, Fy, scale=50)
 
 def plot_force_magnitude(ax, X, Y, Fx, Fy):
+    '''Create a contour plot that shows the magnitude of the force. 
+
+    Parameters
+    ----------
+    ax : axes
+        Axes to plot in.
+    X : TYPE
+        X-location where the force field is evaluated.
+    Y : TYPE
+        Y-location where the force field is evaluated.
+    Fx : TYPE
+        X-component of the force at the locations X.
+    Fy : TYPE
+        Y-component of the force at the locations Y.
+
+    Returns
+    -------
+    None.
+
+    '''
     F = np.sqrt(Fx**2+Fy**2)  
     c = ax.contourf(X, Y, F, levels=np.arange(0,5.5,1), extend="max")   
     #clw = ax.contour(c, levels=np.array((c.levels)), colors="silver", linewidths=0.2)
     cl = ax.contour(c, levels=np.array((c.levels[-1],)), colors='r')
     return c, cl #clw
     
-def figure_for_latex(height, width=18.47987, num=1):
-    cm = 1/2.54
-    return plt.figure(layout='constrained', num=2,figsize=(width*cm, height*cm))
-    
-def export_to_pgf(fig, filename, dirname=None, save=True): 
-    if save:
-        if dirname is not None:
-            path = os.path.join(filename, dirname) + '.pgf'
-            if not os.path.exists(dirname):
-                os.makedirs()  
-        else:
-            path = filename + '.pgf'
-        fig.savefig(path)  
-    
 def main():
     
-    save = True
+    save = False
     
     config_matplotlib_for_latex(save)
     
