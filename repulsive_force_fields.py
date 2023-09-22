@@ -15,6 +15,9 @@ from cyclistsocialforce.vehicle import UnStableBicycle
 from pypaperutils.design import figure_for_latex
 from pypaperutils.io import export_to_pgf
 
+#output directory
+outdir = './figures/'
+
 def config_matplotlib_for_latex(save=True):
     ''' Presets of matplotlib for beautiul latex plots
     
@@ -44,6 +47,8 @@ def config_matplotlib_for_latex(save=True):
     
 def plot_force_direction(ax, X, Y, Fx, Fy):
     '''Create a quiver plot that shows the direction of the force plots. 
+    
+    UNUSED.
 
     Parameters
     ----------
@@ -91,16 +96,28 @@ def plot_force_magnitude(ax, X, Y, Fx, Fy):
 
     Returns
     -------
-    None.
+    QuadContourSet
+        Filled contour showing the magnitude
+    QuadContourSet
+        Single contour highlighting where the repulsive force equal
 
     '''
     F = np.sqrt(Fx**2+Fy**2)  
     c = ax.contourf(X, Y, F, levels=np.arange(0,5.5,1), extend="max")   
-    #clw = ax.contour(c, levels=np.array((c.levels)), colors="silver", linewidths=0.2)
     cl = ax.contour(c, levels=np.array((c.levels[-1],)), colors='r')
     return c, cl #clw
     
 def main():
+    '''
+    Plot and export a figure showing the magnitude and directions of 
+    the repulsive force fields for different locations and relative 
+    orientations.
+
+    Returns
+    -------
+    None.
+
+    '''
     
     save = False
     
@@ -116,9 +133,13 @@ def main():
     fig = figure_for_latex(4.5)
     axes = fig.subplots(1, 3, sharey=True, sharex=True)
     
-    titles = (r"\textbf{Parallell interactions}"+"\n"+r"\small{$\psi_{a,b} = 0$, $\psi_{a,b} = \pm \pi$}", \
-              r"\textbf{45 \textdegree~interactions}"+"\n"+r"\small{$\psi_{a,b} = \pm \frac{1}{4}\pi$, $\psi_{a,b} = \pm \frac{3}{4}\pi$}", \
-              r"\textbf{Perpendicular interactions}"+"\n"+r"\small{$\psi_{a,b} = \pm \frac{1}{2}\pi$}")
+    titles = (r"\textbf{Parallell interactions}"+"\n"+
+              r"\small{$\psi_{a,b} = 0$, $\psi_{a,b} = \pm \pi$}", \
+              r"\textbf{45 \textdegree~interactions}"+"\n"+
+              r"\small{$\psi_{a,b} = \pm \frac{1}{4}\pi$"+
+              r" $\psi_{a,b} = \pm \frac{3}{4}\pi$}", \
+              r"\textbf{Perpendicular interactions}"+"\n"+
+              r"\small{$\psi_{a,b} = \pm \frac{1}{2}\pi$}")
     
     for ax, psi, title in zip(axes.flatten(), psis, titles):
         Fx, Fy = b.calcRepulsiveForce(X, Y, psi)
@@ -129,7 +150,6 @@ def main():
         ax.set_ylim(-5,5)
         ax.set_aspect("equal")
         ax.set_title(title, y=1.1)
-        plt.show()
         
     cbar = fig.colorbar(c, 
                         ax=axes, 
@@ -145,11 +165,8 @@ def main():
     fig.supxlabel(r'$x_{a,b}$ [m]', y=0.01, fontsize=8)
     fig.supylabel(r'$y_{a,b}$ [m]', fontsize=8)
     
-    export_to_pgf(fig, "repulsive_force_fields", save=save)
-    
-    
-    plt.figure(4)
-    plot_force_direction(ax, X, Y, Fx, Fy)
+    export_to_pgf(fig, os.path.join(outdir, "repulsive_force_fields"), 
+                  save=save)
     
 if __name__ == "__main__":
     main()
