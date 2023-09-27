@@ -70,10 +70,10 @@ def scenario_passing(fig, axes, unstable):
                                 userId='b', 
                                 saveForces=True)
     else:
-        bike1 = StableBicycle((0, 0.1, 0 , 3, 0, 0), 
+        bike1 = StableBicycle((0, 0.1, 0 , 3, 0), 
                               userId='a', 
                               saveForces=True)
-        bike2 = StableBicycle((30, -0.1, np.pi, 5, 0, 0), 
+        bike2 = StableBicycle((30, -0.1, np.pi, 5, 0), 
                               userId='b', 
                               saveForces=True)
 
@@ -102,11 +102,11 @@ def scenario_passing(fig, axes, unstable):
     else:
         color=red
 
-    axes[1].plot(bike1.traj[0][0:int(tsim[1]/bike1.params.ts)], 
-                 bike1.traj[1][0:int(tsim[1]/bike1.params.ts)], 
+    axes[1].plot(bike1.traj[0][0:int(tsim[1]/bike1.params.t_s)], 
+                 bike1.traj[1][0:int(tsim[1]/bike1.params.t_s)], 
                  color=color, linewidth=1, marker='4', markevery=0.3)
-    axes[1].plot(bike2.traj[0][0:int(tsim[1]/bike1.params.ts)], 
-                 bike2.traj[1][0:int(tsim[1]/bike1.params.ts)],
+    axes[1].plot(bike2.traj[0][0:int(tsim[1]/bike1.params.t_s)], 
+                 bike2.traj[1][0:int(tsim[1]/bike1.params.t_s)],
                  color=color, linewidth=1, marker='3', markevery=0.4)
 
         
@@ -140,20 +140,20 @@ def scenario_overtaking(fig,axes, unstable):
         bike1 = UnStableBicycle((-5, .1, 0, 3, 0, 0), 
                                 userId='a', 
                                 saveForces=True)
-        bike1.params.v0 = 3
+        bike1.params.v_desired_default = 3.
         bike2 = UnStableBicycle((-20, 0, 0, 6, 0, 0), 
                                 userId='b', 
                                 saveForces=True)
-        bike2.params.v0 = 6
+        bike2.params.v_desired_default = 6.
     else:
-        bike1 = StableBicycle((-5, 0.1, 0, 3, 0, 0), 
+        bike1 = StableBicycle((-5, 0.1, 0, 3, 0), 
                               userId='a', 
                               saveForces=True)
-        bike1.params.v0 = 3
-        bike2 = StableBicycle((-20, 0, 0, 6, 0, 0), 
+        bike1.params.v_desired_default = 3.
+        bike2 = StableBicycle((-20, 0, 0, 6, 0), 
                               userId='b', 
                               saveForces=True)
-        bike2.params.v0 = 6
+        bike2.params.v_desired_default = 6.
         
 
     # A single destination for bike 1
@@ -180,11 +180,11 @@ def scenario_overtaking(fig,axes, unstable):
     else:
         color=red
         
-    axes[1].plot(bike1.traj[0][0:int(tsim[1]/bike1.params.ts)], 
-                 bike1.traj[1][0:int(tsim[1]/bike1.params.ts)],
+    axes[1].plot(bike1.traj[0][0:int(tsim[1]/bike1.params.t_s)], 
+                 bike1.traj[1][0:int(tsim[1]/bike1.params.t_s)],
                  color=color, linewidth=1, marker='4', markevery=0.4)
-    axes[1].plot(bike2.traj[0][0:int(tsim[1]/bike1.params.ts)], 
-                 bike2.traj[1][0:int(tsim[1]/bike1.params.ts)],
+    axes[1].plot(bike2.traj[0][0:int(tsim[1]/bike1.params.t_s)], 
+                 bike2.traj[1][0:int(tsim[1]/bike1.params.t_s)],
                  color=color, linewidth=1, marker='4', markevery=0.3)
 
         
@@ -220,28 +220,28 @@ def scenario_crossing(fig,axes, unstable):
         bike1 = UnStableBicycle((-23+17, 0, 0, 5, 0, 0), 
                                 userId='a', 
                                 saveForces=True)
-        bike1.params.v0 = 4.5
+        bike1.params.v_desired_default = 4.5
         bike2 = UnStableBicycle((0+15, -20, np.pi/2, 5, 0, 0), 
                                 userId='b', 
                                 saveForces=True)
-        bike2.params.v0 = 5
+        bike2.params.v_desired_default = 5.
         bike3 = UnStableBicycle((-2+15, -20, np.pi/2, 5, 0, 0), 
                                 userId='c', 
                                 saveForces=True)
-        bike3.params.v0 = 5
+        bike3.params.v_desired_default = 5.
     else:
-        bike1 = StableBicycle((-23+17, 0, 0, 5, 0, 0), 
+        bike1 = StableBicycle((-23+17, 0, 0, 5, 0), 
                               userId='a', 
                               saveForces=True)
-        bike1.params.v0 = 4.5
-        bike2 = StableBicycle((0+15, -20, np.pi/2, 5, 0, 0), 
+        bike1.params.v_desired_default = 4.5
+        bike2 = StableBicycle((0+15, -20, np.pi/2, 5, 0), 
                               userId='b', 
                               saveForces=True)
-        bike2.params.v0 = 5
-        bike3 = StableBicycle((-2+15, -20, np.pi/2, 5, 0, 0), 
+        bike2.params.v_desired_default = 5.
+        bike3 = StableBicycle((-2+15, -20, np.pi/2, 5, 0), 
                               userId='c', 
                               saveForces=True)
-        bike3.params.v0 = 5
+        bike3.params.v_desired_default = 5.
 
     # A single destination for bike 1
     bike1.setDestinations((35, 64, 65),(0,0,0))
@@ -273,7 +273,7 @@ def scenario_crossing(fig,axes, unstable):
         color=red
         label='2D model'
 
-    T = int(tsim[1]/bike1.params.ts)
+    T = int(tsim[1]/bike1.params.t_s)
     
     axes[1].plot(bike1.traj[0,0:T], bike1.traj[1,0:T], 
                  color=color, linewidth=1,marker='4',markevery=0.4, 
@@ -298,22 +298,22 @@ def scenario_crossing(fig,axes, unstable):
     print(f'b2-b3: {d23[imin23]:.2f} m')
 
     #Calculate the post-encroachment time
-    pet12, p121, p122 = pet(bike1.traj[0:2,0:int(tsim[1]/bike1.params.ts)],
-                      bike2.traj[0:2,0:int(tsim[1]/bike2.params.ts)],
-                      bike1.params.ts)
-    pet13, p131, p132 = pet(bike1.traj[0:2,0:int(tsim[1]/bike1.params.ts)],
-                      bike3.traj[0:2,0:int(tsim[1]/bike3.params.ts)],
-                       bike1.params.ts)
-    pet23, p231, p232 = pet(bike2.traj[0:2,0:int(tsim[1]/bike2.params.ts)],
-                      bike3.traj[0:2,0:int(tsim[1]/bike3.params.ts)],
-                       bike1.params.ts)
+    pet12, p121, p122 = pet(bike1.traj[0:2,0:int(tsim[1]/bike1.params.t_s)],
+                      bike2.traj[0:2,0:int(tsim[1]/bike2.params.t_s)],
+                      bike1.params.t_s)
+    pet13, p131, p132 = pet(bike1.traj[0:2,0:int(tsim[1]/bike1.params.t_s)],
+                      bike3.traj[0:2,0:int(tsim[1]/bike3.params.t_s)],
+                       bike1.params.t_s)
+    pet23, p231, p232 = pet(bike2.traj[0:2,0:int(tsim[1]/bike2.params.t_s)],
+                      bike3.traj[0:2,0:int(tsim[1]/bike3.params.t_s)],
+                       bike1.params.t_s)
     
     print('PET:')
     print(f'b1-b2: {pet12:.2f} s')
     print(f'b1-b3: {pet13:.2f} s')
     print(f'b2-b3: {pet23:.2f} s')
     
-    return bike1.traj[1,0:T], np.arange(0,tsim[1], bike1.params.ts)        
+    return bike1.traj[1,0:T], np.arange(0,tsim[1], bike1.params.t_s)        
 
 
 def plot_lateral_deviation(dev1, dev2, t, save=True):
@@ -382,10 +382,10 @@ def scenario_stepresponse(save=False):
         
     tsim = (4.,20.,1.)    
     bike1 = UnStableBicycle((1, 3, 0 , 5, 0, 0), userId='b1', saveForces=True)
-    bike2 = StableBicycle((1, 3, 0 , 5, 0, 0), userId='b1', saveForces=True)
+    bike2 = StableBicycle((1, 3, 0 , 5, 0), userId='b1', saveForces=True)
 
-    bike1.params.v0 = 5
-    bike2.params.v0 = 5
+    bike1.params.v_desired_default = 5.
+    bike2.params.v_desired_default = 5.
     
     bike2.setDestinations([1000,],[1000,])
      
@@ -394,20 +394,20 @@ def scenario_stepresponse(save=False):
     bike1.force = (Fx,Fy)
     bike2.force = (Fx,Fy)
 
-    phi_d = np.zeros(int(tsim[1]/bike1.params.ts))
-    v_d = np.zeros(int(tsim[1]/bike1.params.ts))
-    dstate = np.zeros(int(tsim[1]/bike1.params.ts))
+    phi_d = np.zeros(int(tsim[1]/bike1.params.t_s))
+    v_d = np.zeros(int(tsim[1]/bike1.params.t_s))
+    dstate = np.zeros(int(tsim[1]/bike1.params.t_s))
     xideal = np.zeros_like(phi_d)
     yideal = np.zeros_like(phi_d)
     xidealprev = 1
     yidealprev = 3
 
-    for i in range(0,int(tsim[1]/bike1.params.ts)):
+    for i in range(0,int(tsim[1]/bike1.params.t_s)):
         phi_d[i] = np.arctan2(Fy,Fx)
         v_d[i] = np.sqrt(Fx**2+Fy**2)
         dstate[i] = 1*bike1.znav[0]+2*bike1.znav[1]+3*bike1.znav[2]
         
-        if i*bike1.params.ts == tsim[2]:
+        if i*bike1.params.t_s == tsim[2]:
             Fx = 5*(5./np.sqrt(3**2+5**2))
             Fy = 5*(3./np.sqrt(3**2+5**2))
             bike1.force = (Fx,Fy)
@@ -416,13 +416,13 @@ def scenario_stepresponse(save=False):
         bike1.step(Fx, Fy)
         bike2.step(Fx, Fy)
         
-        xideal[i] = xidealprev+Fx*bike1.params.ts
-        yideal[i] = yidealprev+Fy*bike1.params.ts
+        xideal[i] = xidealprev+Fx*bike1.params.t_s
+        yideal[i] = yidealprev+Fy*bike1.params.t_s
         xidealprev = xideal[i]
         yidealprev = yideal[i]
     
-    psi = np.zeros((int(tsim[1]/bike1.params.ts,)))
-    psi[int(tsim[2]/bike1.params.ts):] = np.arctan2(Fy, Fx)
+    psi = np.zeros((int(tsim[1]/bike1.params.t_s,)))
+    psi[int(tsim[2]/bike1.params.t_s):] = np.arctan2(Fy, Fx)
         
     make_step_response_figure(bike1, bike2, (xideal, yideal), psi, tsim[1], 
                               save=save)
@@ -496,38 +496,38 @@ def make_step_response_figure(bu, bs, trajideal, psi, tsim, save=False):
     ax4.set_xlabel(r'time $t$  [s]')
     
     #distance measurements
-    idmin = np.argmin(bu.traj[1][0:int(tsim/bu.params.ts)])
+    idmin = np.argmin(bu.traj[1][0:int(tsim/bu.params.t_s)])
     ydmin = bu.traj[1][idmin]
     xdmin = bu.traj[0][idmin]
     
-    t = np.arange(0,tsim,bs.params.ts)
+    t = np.arange(0,tsim,bs.params.t_s)
     ax1.plot(trajideal[0], trajideal[1], 
              color=gray, linewidth=1, label='desired')
-    ax1.plot(bs.traj[0][0:int(tsim/bs.params.ts)], 
-             bs.traj[1][0:int(tsim/bs.params.ts)],
+    ax1.plot(bs.traj[0][0:int(tsim/bs.params.t_s)], 
+             bs.traj[1][0:int(tsim/bs.params.t_s)],
              color=red, linewidth=1.5,label='2D model')
-    ax1.plot(bu.traj[0][0:int(tsim/bu.params.ts)], 
-             bu.traj[1][0:int(tsim/bu.params.ts)],
+    ax1.plot(bu.traj[0][0:int(tsim/bu.params.t_s)], 
+             bu.traj[1][0:int(tsim/bu.params.t_s)],
              color=cyan, linewidth=1.5,label='inv. pendulum')
     
     dmax = 0
     idmax= 0
-    for i in range(int(2/bu.params.ts), int(tsim/bu.params.ts)):
+    for i in range(int(2/bu.params.t_s), int(tsim/bu.params.t_s)):
         d, pc = distance_to_line((bu.traj[0][i],bu.traj[1][i]), 
-                                    (trajideal[0][int(3/bu.params.ts)],
-                                     trajideal[1][int(3/bu.params.ts)]), 
-                                    (trajideal[0][int(15/bu.params.ts)],
-                                     trajideal[1][int(15/bu.params.ts)]))
+                                    (trajideal[0][int(3/bu.params.t_s)],
+                                     trajideal[1][int(3/bu.params.t_s)]), 
+                                    (trajideal[0][int(15/bu.params.t_s)],
+                                     trajideal[1][int(15/bu.params.t_s)]))
         if d > dmax:
             dmax = d
             idmax = i
             
     dmax2, pc = draw_distance_to_line(ax1,
                                       (bu.traj[0][idmax], bu.traj[1][idmax]), 
-                                      (trajideal[0][int(3/bu.params.ts)],
-                                       trajideal[1][int(3/bu.params.ts)]), 
-                                      (trajideal[0][int(15/bu.params.ts)],
-                                       trajideal[1][int(15/bu.params.ts)]),
+                                      (trajideal[0][int(3/bu.params.t_s)],
+                                       trajideal[1][int(3/bu.params.t_s)]), 
+                                      (trajideal[0][int(15/bu.params.t_s)],
+                                       trajideal[1][int(15/bu.params.t_s)]),
                                       20, width=1)
     ax1.text(33,16, f'{dmax:.2f} m')   
     ax1.plot((31,32.8),(16.3,16.5), linewidth=.5,  color=black)
@@ -537,11 +537,11 @@ def make_step_response_figure(bu, bs, trajideal, psi, tsim, save=False):
     ax10.plot((8.1,8.5), (2.9,3.1), color=black, linewidth = .5)
     ax10.plot(trajideal[0], trajideal[1], 
               color=gray, linewidth=1, label='desired')        
-    ax10.plot(bs.traj[0][0:int(tsim/bs.params.ts)], 
-              bs.traj[1][0:int(tsim/bs.params.ts)], 
+    ax10.plot(bs.traj[0][0:int(tsim/bs.params.t_s)], 
+              bs.traj[1][0:int(tsim/bs.params.t_s)], 
               color=red, linewidth=2,label='2D model')
-    ax10.plot(bu.traj[0][0:int(tsim/bu.params.ts)], 
-              bu.traj[1][0:int(tsim/bu.params.ts)],
+    ax10.plot(bu.traj[0][0:int(tsim/bu.params.t_s)], 
+              bu.traj[1][0:int(tsim/bu.params.t_s)],
               color=cyan, linewidth=2,label='inv. pendulum')
     dmax_cs, pc = draw_distance_to_line(ax10, (xdmin,ydmin), 
                                         (1,3), (10,3), 0, width=0.1)
@@ -550,15 +550,15 @@ def make_step_response_figure(bu, bs, trajideal, psi, tsim, save=False):
 
     ax2.plot(t, (360/(2*np.pi)) * psi, 
              color=gray,label='2D model', linewidth=1)
-    ax2.plot(t, (360/(2*np.pi)) * bu.traj[2][0:int(tsim/bu.params.ts)], 
+    ax2.plot(t, (360/(2*np.pi)) * bu.traj[2][0:int(tsim/bu.params.t_s)], 
              color=cyan)
-    ax2.plot(t, (360/(2*np.pi)) * bs.traj[2][0:int(tsim/bu.params.ts)], 
+    ax2.plot(t, (360/(2*np.pi)) * bs.traj[2][0:int(tsim/bu.params.t_s)], 
              color=red)
-    ax3.plot(t, (360/(2*np.pi)) * bu.traj[4][0:int(tsim/bu.params.ts)], 
+    ax3.plot(t, (360/(2*np.pi)) * bu.traj[4][0:int(tsim/bu.params.t_s)], 
              color=cyan)
-    ax3.plot(t, (360/(2*np.pi)) * bs.traj[4][0:int(tsim/bu.params.ts)], 
+    ax3.plot(t, (360/(2*np.pi)) * bs.traj[4][0:int(tsim/bu.params.t_s)], 
              color=red)
-    ax4.plot(t, (360/(2*np.pi)) * bu.traj[5][0:int(tsim/bu.params.ts)], 
+    ax4.plot(t, (360/(2*np.pi)) * bu.traj[5][0:int(tsim/bu.params.t_s)], 
              color=cyan)
 
     pp, p1, p2 = mark_inset(ax1, ax10, loc1=3, loc2=4, linewidth=0.5, zorder=3)
@@ -594,7 +594,7 @@ def scenario_parcours(fig, axes, unstable):
         bike1 = UnStableBicycle((1-5, 0, 0 , 6, 0, 0), 
                                 userId='a', saveForces=True)
     else:
-        bike1 = StableBicycle((1-5, 0, 0 , 6, 0, 0), 
+        bike1 = StableBicycle((1-5, 0, 0 , 6, 0), 
                               userId='a', saveForces=True)
 
     # Destinations
@@ -626,8 +626,8 @@ def scenario_parcours(fig, axes, unstable):
     else:
         color=red
 
-    axes[1].plot(bike1.traj[0][0:int(tsim[1]/bike1.params.ts)], 
-                 bike1.traj[1][0:int(tsim[1]/bike1.params.ts)],
+    axes[1].plot(bike1.traj[0][0:int(tsim[1]/bike1.params.t_s)], 
+                 bike1.traj[1][0:int(tsim[1]/bike1.params.t_s)],
                  color=color, linewidth=1, marker='4',markevery=0.4)
     
 
@@ -787,10 +787,10 @@ def main():
     """
     
     #set to true to save output
-    save = True
+    save = False
     
     #selectors
-    run_step_response = True
+    run_step_response = False
     run_interaction_tests = True
   
     #disable to see results of the other
