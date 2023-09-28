@@ -2,12 +2,24 @@
 '''
 Created on Tue Aug 15 17:28:59 2023
 
-Plots the figures on inner and outer stability limits. 
+stability_limits.py
 
-Requires cyclistsocialforce>=1.0.0
+Plots Figure 5: "Stability limits of the inner loop for the gain KD(v).", and
+Figure 6: "Stability limits of the outer loop for the gains KP (v) and KI (v) 
+with ki0 = 0.2.", for Schmidt et al. (2023).
+
+Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential 
+Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the 
+Social Force Model [preprint]. The Evolving Scholar - BMD 2023, 5th Edition. 
+https://doi.org/10.59490/65037d08763775ba4854da53
+
+
+Requires cyclistsocialforce>=1.1.0
 Requires pypaperutils (https://github.com/chrismo-schmidt/pypaperutils)
 
-@author: christophschmi
+Usage: $ python stability_limits.py
+
+@author: Christoph M. Schmidt, TU Delft. 
 '''
 
 import os

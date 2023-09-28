@@ -1,19 +1,23 @@
 Essential bicycle dynamics for microscopic simulation - Experiments
 ==============================
 
-Scripts running the simulation experiments corresponding to our publication "Essential bicycle dynamics for microscopic simulation - An example using the social force model."
+Simulation experiments and plots of our publication "Essential bicycle dynamics for microscopic simulation - An example using the social force model."
 
-These scripts produce the measurements and figures inculded in the publication.
+**test_scenarios.py:** Simulation experiments and Figures 8 - 10 and Table 1.
+
+**stablility_limits.py:** Figures 5 and 6.
+
+**repulsive_force_fileds.py:** Figure 3.
 
 ## Requirements
 
 - Python 3.11
 
-- cyclistsocialforce 1.0.0
+- cyclistsocialforce 1.1.0
 
-- pypaperutils
+- [pypaperutils](https://github.com/chrismo-schmidt/pypaperutils.git)
 
-- pytrafficutils
+- [pytrafficutils](https://github.com/chrismo-schmidt/pytrafficutils.git)
 
 ## Installation
 
@@ -28,11 +32,10 @@ These scripts produce the measurements and figures inculded in the publication.
 License
 --------------------
 
-This software is licensed under the terms of the [MIT license](https://github.com/chrismo-schmidt/cyclistsocialforce/blob/main/LICENSE).
+This software is licensed under the terms of the MIT License.
 
 ## Citation
 
 If you use this software in your research, please cite it in your publications as:
 
-Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the
-Social Force Model. The Evolving Scholar - BMD 2023, 5th Edition. https://doi.org/10.59490/649d4037c2c818c6824899bd
+Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the Social Force Model [preprint]. The Evolving Scholar - BMD 2023, 5th Edition. https://doi.org/10.59490/65037d08763775ba4854da53

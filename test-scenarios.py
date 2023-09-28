@@ -2,14 +2,27 @@
 '''
 Created on Fri Aug 18 09:15:33 2023
 
-Experiments and plots for example scenarios of cyclist social forces with
-inverted pendulum bicycles. 
+test_scenarios.py
 
-Requires cyclistsocialforce>=1.0.0
+Runs the test scenarios and plots Figure 8: "Yaw angle step response at 
+constant speed.", Figure 9: "Test scenarios of the cyclist social force model 
+with bicycle dynamics.", and Figure 10: "Deviation of cyclist a in the 
+encroaching scenario from it’s undisturbed path.", for Schmidt et al. (2023).
+Calculates the Post Encroachment times in the encroaching test scenario for 
+Table 1.   
+
+Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential 
+Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the 
+Social Force Model [preprint]. The Evolving Scholar - BMD 2023, 5th Edition. 
+https://doi.org/10.59490/65037d08763775ba4854da53
+
+Requires cyclistsocialforce>=1.1.0
 Requires pypaperutils (https://github.com/chrismo-schmidt/pypaperutils)
 Requires pytrafficutils (https://github.com/chrismo-schmidt/pytrafficutils)
 
-@author: Christoph M. Schmidt
+Usage: $ python stability_limits.py
+
+@author: Christoph M. Schmidt, TU Delft. 
 '''
 
 import os

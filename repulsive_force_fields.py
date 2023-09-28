@@ -2,9 +2,28 @@
 """
 Created on Mon Aug 14 15:45:28 2023
 
-Plots the figure "Repulsive force field of a cyclist"
+repulsive-force-fields.py
 
-@author: christophschmi
+Plots Figure 3: "Repulsive force fields of a cyclist a located at (0, 0) for 
+different relative orientations ψa,b and positions (xa,b, ya,b) of a cyclist b. 
+Colors indicate the magnitude of the force field as multiples of the desired 
+velocity vd of b. The red line marks where the repulsive force equals the 
+maximum magnitude of b’s destination force. The repulsive force direction 
+experienced by b is perpendicular to the contour lines and indicated by black 
+arrows.", for Schmidt et al. (2023).
+
+Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential 
+Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the 
+Social Force Model [preprint]. The Evolving Scholar - BMD 2023, 5th Edition. 
+https://doi.org/10.59490/65037d08763775ba4854da53
+
+
+Requires cyclistsocialforce>=1.1.0
+Requires pypaperutils (https://github.com/chrismo-schmidt/pypaperutils)
+
+Usage: $ python repulsive_force_fields.py
+
+@author: Christoph M. Schmidt, TU Delft. 
 """
 import numpy as np
 import matplotlib
