@@ -4,6 +4,8 @@
 *.pgf 
 *.gif
 
+Thumbs.db
+
 # Distribution / packaging
 .Python
 env/
