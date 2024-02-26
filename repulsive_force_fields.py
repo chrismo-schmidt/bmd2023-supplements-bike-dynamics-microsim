@@ -32,42 +32,11 @@ import os
 
 from cyclistsocialforce.vehicle import InvPendulumBicycle
 from cyclistsocialforce.vizualisation import BicycleDrawing2D
-from pypaperutils.design import figure_for_latex
+from pypaperutils.design import figure_for_latex, config_matplotlib_for_latex
 from pypaperutils.io import export_to_pgf
 
 # output directory
 outdir = "./figures/"
-
-
-def config_matplotlib_for_latex(save=True):
-    """Presets of matplotlib for beautiul latex plots
-
-    Parameters
-    ----------
-    save : boolean, optional
-        Flag indicating if 2D bicycles or inverted pendulum bicycles should be
-        simulated. True = inv. pendulum. False = 2D bicycles.
-    """
-
-    if save:
-        matplotlib.use("pgf")
-    else:
-        matplotlib.use("Qt5Agg")
-
-    matplotlib.rcParams.update(
-        {
-            "text.usetex": True,
-            "font.family": "serif",
-            "axes.labelsize": 8,
-            "axes.titlesize": 10,
-            "font.size": 10,
-            "legend.fontsize": 10,
-            "xtick.labelsize": 8,
-            "ytick.labelsize": 8,
-        }
-    )
-
-    plt.close("all")
 
 
 def plot_force_direction(ax, X, Y, Fx, Fy):
@@ -146,7 +115,7 @@ def main():
 
     """
 
-    save = True
+    save = False
 
     config_matplotlib_for_latex(save)
 
@@ -163,14 +132,14 @@ def main():
     titles = (
         r"\textbf{Parallel interactions}"
         + "\n"
-        + r"\footnotesize{$\psi_{a,b} = 0$, $\psi_{a,b} = \pm \pi$}",
+        + r"\footnotesize{$\psi_\mathrm{a,b} = 0$, $\psi_\mathrm{a,b} = \pm \pi$}",
         r"\textbf{45 \textdegree~interactions}"
         + "\n"
-        + r"\footnotesize{$\psi_{a,b} = \pm \frac{1}{4}\pi$"
-        + r" $\psi_{a,b} = \pm \frac{3}{4}\pi$}",
+        + r"\footnotesize{$\psi_\mathrm{a,b} = \pm \frac{1}{4}\pi$"
+        + r" $\psi_\mathrm{a,b} = \pm \frac{3}{4}\pi$}",
         r"\textbf{Perpendicular interactions}"
         + "\n"
-        + r"\footnotesize{$\psi_{a,b} = \pm \frac{1}{2}\pi$}",
+        + r"\footnotesize{$\psi_\mathrm{a,b} = \pm \frac{1}{2}\pi$}",
     )
 
     for ax, psi, title in zip(axes.flatten(), psis, titles):
@@ -197,12 +166,14 @@ def main():
         pad=0.01,
         ticks=[0, 2.5, 5],
     )
-    cbar.ax.set_yticklabels(("0", r"$\frac{v_d}{2}$", r"$v_d$"))
+    cbar.ax.set_yticklabels(
+        ("0", r"$\frac{v_\mathrm{d}}{2}$", r"$v_\mathrm{d}$")
+    )
     # cbar.add_lines(clw)
     cbar.add_lines(cl)
 
-    fig.supxlabel(r"$x_{a,b}$ [m]", y=0.0, x=0.51, fontsize=8)
-    fig.supylabel(r"$y_{a,b}$ [m]", fontsize=8)
+    fig.supxlabel(r"$x_\mathrm{a,b}$ [m]", y=0.0, x=0.51, fontsize=8)
+    fig.supylabel(r"$y_\mathrm{a,b}$ [m]", fontsize=8)
 
     export_to_pgf(
         fig, os.path.join(outdir, "repulsive_force_fields"), save=save
