@@ -36,6 +36,7 @@ import matplotlib
 from cyclistsocialforce.vehicle import InvPendulumBicycle, TwoDBicycle
 from cyclistsocialforce.intersection import SocialForceIntersection
 from cyclistsocialforce.vizualisation import BicycleDrawing2D
+from cyclistsocialforce.parameters import InvPendulumBicycleParameters
 from pypaperutils.design import TUDcolors, figure_for_latex
 from pypaperutils.measure import draw_distance_to_line, distance_to_line
 from pypaperutils.io import export_to_pgf
@@ -260,16 +261,29 @@ def scenario_crossing(fig, axes, unstable):
     plt.rcParams["text.usetex"] = False
 
     if unstable:
+        params1 = InvPendulumBicycleParameters()
+        params2 = InvPendulumBicycleParameters()
+        params3 = InvPendulumBicycleParameters()
+
         bike1 = InvPendulumBicycle(
-            (-23 + 17, 0, 0, 5, 0, 0), userId="a", saveForces=True
+            (-23 + 17, 0, 0, 5, 0, 0),
+            params=params1,
+            userId="a",
+            saveForces=True,
         )
         bike1.params.v_desired_default = 4.5
         bike2 = InvPendulumBicycle(
-            (0 + 15, -20, np.pi / 2, 5, 0, 0), userId="b", saveForces=True
+            (0 + 15, -20, np.pi / 2, 5, 0, 0),
+            params=params2,
+            userId="b",
+            saveForces=True,
         )
         bike2.params.v_desired_default = 5.0
         bike3 = InvPendulumBicycle(
-            (-2 + 15, -20, np.pi / 2, 5, 0, 0), userId="c", saveForces=True
+            (-2 + 15, -20, np.pi / 2, 5, 0, 0),
+            params=params3,
+            userId="c",
+            saveForces=True,
         )
         bike3.params.v_desired_default = 5.0
     else:
@@ -442,13 +456,13 @@ def plot_lateral_deviation(dev1, dev2, t, save=True):
     ax2.set_ylabel("deviation  [m]")
     draw_distance_to_line(ax2, p0, p1, p2, -2)
     ax2.plot(
-        (4.5, t[ip1]),
+        (3.5, t[ip1]),
         (dev2[ip1], dev2[ip1]),
         linestyle="--",
         color=black,
         linewidth=0.5,
     )
-    ax2.text(2, -1.1, f"{dev1[ip0]-dev2[ip1]:.2f} m")
+    ax2.text(1.2, -1.2, f"{dev1[ip0]-dev2[ip1]:.2f} m")
 
     ax2.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 
@@ -562,7 +576,7 @@ def make_step_response_figure(bu, bs, trajideal, psi, tsim, save=False):
     else:
         matplotlib.use("Qt5Agg")
 
-    fig = figure_for_latex(9)
+    fig = figure_for_latex(8)
 
     gs0 = fig.add_gridspec(3, 2)
 
@@ -574,12 +588,13 @@ def make_step_response_figure(bu, bs, trajideal, psi, tsim, save=False):
     ax1.set_ylim(0, 50)
     ax1.set_aspect("equal")
     ax1.set_xlabel(r"$x$  [m]")
+    ax1.xaxis.set_label_coords(0.5, -0.05)
     ax1.set_ylabel(r"$y$  [m]")
     ax1.set_title("Trajectories")
 
     # inset zoomed on the moment of the step
     ax10 = zoomed_inset_axes(
-        ax1, zoom=10, loc="upper center", bbox_to_anchor=(190, 310)
+        ax1, zoom=10, loc="upper center", bbox_to_anchor=(180, 275)
     )
     ax10.set_xlim(5.5, 9)
     ax10.set_ylim(2.5, 4)
@@ -594,17 +609,18 @@ def make_step_response_figure(bu, bs, trajideal, psi, tsim, save=False):
     ax2.set_xlim(1, 10)
     ax2.set_xticks([0, 5, 10, 15])
     ax2.set_xticklabels([])
-    ax2.set_ylabel(r"yaw $\psi_{\rm{a}}$ in \textdegree")
+    ax2.set_ylabel(r"yaw $\psi$ [\textdegree]")
     ax2.set_title("Bicycle States")
 
-    ax3.set_ylabel(r"steer $\delta_{\mathrm{a}}$ in \textdegree")
+    ax3.set_ylabel(r"steer $\delta$ [\textdegree]")
     ax3.set_yticks([-15, 0, 15])
 
-    ax4.set_ylabel(r"lean $\theta_{\mathrm{a}}$ in \textdegree")
+    ax4.set_ylabel(r"roll $\theta$ [\textdegree]")
     ax4.set_xlim(1, 10)
     ax4.set_xticks([0, 5, 10, 15])
     ax4.set_yticks([0, 5, 10, 15])
     ax4.set_xlabel(r"time $t$  [s]")
+    ax4.xaxis.set_label_coords(0.5, -0.2)
 
     # distance measurements
     idmin = np.argmin(bu.traj[1][0 : int(tsim / bu.params.t_s)])
@@ -794,7 +810,6 @@ def scenario_parcours(fig, axes, unstable):
 
     fig, fig_bg, ax = init_animation(fig, axes[0])
 
-    # save_output
     name = "scenario-parcours"
     snapshots = np.array((3.0))
 
@@ -1009,7 +1024,7 @@ def main():
     """Main function running the Test scenarios"""
 
     # set to true to save output
-    save = True
+    save = False
 
     # selectors
     run_step_response = True
@@ -1022,7 +1037,9 @@ def main():
 
     # disable to see results of the other
     if run_interaction_tests:
-        config_matplotlib_for_latex(False)
+        config_matplotlib_for_latex(
+            False
+        )  # The animation only runs with Qt, pgf export is not possible.
         fig, axes, gs = make_test_scenario_figure()
         scenario_parcours(fig, axes[0:2], True)
         scenario_parcours(fig, axes[0:2], False)
@@ -1051,8 +1068,8 @@ def main():
         axes[3].set_ylabel("Passing")
         axes[5].set_ylabel("Overtaking")
         axes[7].set_ylabel("Encroaching")
-        axes[0].set_title("Simulation snapshots")
-        axes[1].set_title("Simulated trajectories")
+        axes[0].set_title("Simulation snapshots with the inv. pendulum model")
+        axes[1].set_title("Simulated trajectories for both models")
 
         if save:
             plt.figure(fig.number)
