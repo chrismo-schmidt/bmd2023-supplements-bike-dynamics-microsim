@@ -16,7 +16,7 @@ https://doi.org/10.59490/65037d08763775ba4854da53
 Requires cyclistsocialforce>=1.1.0
 Requires pypaperutils (https://github.com/chrismo-schmidt/pypaperutils)
 
-Usage: $ python stability_limits.py
+Usage: $ python stability_limits_symbolic.py
 
 @author: Christoph M. Schmidt, TU Delft
 @author: Jason K. Moore, TU Delft (see PR#9 in cyclistsocialforce)
