@@ -58,7 +58,7 @@ print_coeffs = False
 solve_routh_parameters = True
 
 plot_paper_format = True
-plot_save = False
+plot_save = True
 plot_stepwidth_limits = 0.01
 
 
@@ -387,8 +387,8 @@ if solve_routh_parameters:
             axes_inner.set_ylabel("$K_\mathrm{D}$")
             # axes_inner.set_xlabel("$v$")
             axes_inner.text(4.8, -1300, "$v$")
-            axes_inner.text(0.1, -170, "$A_2, B_1$")
-            axes_inner.text(1, -750, "$A_3$")
+            axes_inner.text(0.1, -170, "$\mathrm{A}_2, \mathrm{B}_1$")
+            axes_inner.text(1, -750, "$\mathrm{A}_3$")
             axes_inner.text(
                 4,
                 -300,
@@ -585,10 +585,10 @@ if solve_routh_parameters:
                 r"$v_\mathrm{min}\approx2.26~\frac{\mathrm{m}}{\mathrm{s}}$",
                 color="red",
             )
-            axes_outer[0].text(1.5, 1.2, "$A_3$")
-            axes_outer[0].text(3.7, 1.4, "$C_1$")
-            axes_outer[0].text(5, 1.15, "$D_1$")
-            axes_outer[0].text(8, -0.4, "$A_5$")
+            axes_outer[0].text(1.5, 1.2, "$\mathrm{A}_3$")
+            axes_outer[0].text(3.7, 1.4, "$\mathrm{C}_1$")
+            axes_outer[0].text(5, 1.15, "$\mathrm{D}_1$")
+            axes_outer[0].text(8, -0.4, "$\mathrm{A}_5$")
             axes_outer[0].text(
                 7,
                 0.5,
@@ -598,8 +598,8 @@ if solve_routh_parameters:
                 zorder=100,
             )
 
-            axes_outer[1].text(8, 0.51, "$A_2, B_1$")
-            axes_outer[1].text(1, 0.35, "$C_1$")
+            axes_outer[1].text(8, 0.51, "$\mathrm{A}_2, \mathrm{B}_1$")
+            axes_outer[1].text(1, 0.35, "$\mathrm{C}_1$")
             axes_outer[1].plot(
                 (1.3, 1.5),
                 (0.3, 0.2),
@@ -613,7 +613,7 @@ if solve_routh_parameters:
                 color="black",
             )
 
-            axes_outer[1].text(4, 0.135, "$D_1$")
+            axes_outer[1].text(4, 0.135, "$\mathrm{D}_1$")
             axes_outer[1].plot(
                 (4, 4 - 0.5),
                 (0.15 + 0.04, 0.33),
@@ -626,7 +626,7 @@ if solve_routh_parameters:
                 linewidth=0.5,
                 color="black",
             )
-            axes_outer[1].text(1.6, 0.04, "$A_4$")
+            axes_outer[1].text(1.6, 0.04, "$\mathrm{A}_4$")
             axes_outer[1].text(
                 7,
                 0.15,
