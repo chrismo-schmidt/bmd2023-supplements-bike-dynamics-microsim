@@ -1,11 +1,11 @@
-Essential bicycle dynamics for microscopic simulation - Experiments
+Essential bicycle dynamics for microscopic simulation - Experiments & Plots
 ==============================
 
 Simulation experiments and plots of our publication "Essential bicycle dynamics for microscopic simulation - An example using the social force model."
 
 **test_scenarios.py:** Simulation experiments and Figures 8 - 10 and Table 1.
 
-**stablility_limits.py:** Figures 5 and 6.
+**stablility_limits_symbolic.py:** Figures 5 and 6 and verification of the equations of the paper. 
 
 **repulsive_force_fileds.py:** Figure 3.
 
@@ -28,6 +28,7 @@ Simulation experiments and plots of our publication "Essential bicycle dynamics 
 ## Authors
 
 - Christoph M. Schmidt, c.m.schmidt@tudelft.nl
+- Jason K. Moore
 
 License
 --------------------
