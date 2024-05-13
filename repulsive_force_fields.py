@@ -70,7 +70,7 @@ def plot_force_direction(ax, X, Y, Fx, Fy):
     Fx = 2 * Fx / (np.sqrt(Fx**2 + Fy**2))
     Fy = 2 * Fy / (np.sqrt(Fx**2 + Fy**2))
 
-    ax.quiver(X, Y, Fx, Fy, scale=50)
+    ax.quiver(X, Y, Fx, Fy, scale=50, color="white")
 
 
 def plot_force_magnitude(ax, X, Y, Fx, Fy):
@@ -94,13 +94,28 @@ def plot_force_magnitude(ax, X, Y, Fx, Fy):
     QuadContourSet
         Filled contour showing the magnitude
     QuadContourSet
-        Single contour highlighting where the repulsive force equal
+        Countours separating the filled regions of the contour plot
+    QuadContourSet
+        Single contour highlighting where the repulsive force equals the destination force
 
     """
     F = np.sqrt(Fx**2 + Fy**2)
     c = ax.contourf(X, Y, F, levels=np.arange(0, 5.5, 1), extend="max")
-    cl = ax.contour(c, levels=np.array((c.levels[-1],)), colors="r")
-    return c, cl  # clw
+    cl = ax.contour(
+        X,
+        Y,
+        F,
+        levels=np.arange(0, 5.5, 1),
+        extend="max",
+        colors="white",
+        linewidths=0.1,
+    )
+    cr = ax.contour(
+        c,
+        levels=np.array((c.levels[-1],)),
+        colors="r",
+    )
+    return c, cl, cr  # clw
 
 
 def main():
@@ -116,6 +131,7 @@ def main():
     """
 
     save = False
+    draw_bike = False
 
     config_matplotlib_for_latex(save)
 
@@ -132,21 +148,21 @@ def main():
     titles = (
         r"\textbf{Parallel interactions}"
         + "\n"
-        + r"\footnotesize{$\psi_\mathrm{a,b} = 0$, $\psi_\mathrm{a,b} = \pm \pi$}",
+        + r"\footnotesize{$\psi_{a,b} = 0$, $\psi_{a,b} = \pm \pi$}",
         r"\textbf{45 \textdegree~interactions}"
         + "\n"
-        + r"\footnotesize{$\psi_\mathrm{a,b} = \pm \frac{1}{4}\pi$"
-        + r" $\psi_\mathrm{a,b} = \pm \frac{3}{4}\pi$}",
+        + r"\footnotesize{$\psi_{a,b} = \pm \frac{1}{4}\pi$"
+        + r" $\psi_{a,b} = \pm \frac{3}{4}\pi$}",
         r"\textbf{Perpendicular interactions}"
         + "\n"
-        + r"\footnotesize{$\psi_\mathrm{a,b} = \pm \frac{1}{2}\pi$}",
+        + r"\footnotesize{$\psi_{a,b} = \pm \frac{1}{2}\pi$}",
     )
 
     for ax, psi, title in zip(axes.flatten(), psis, titles):
         Fx, Fy = b.calcRepulsiveForce(X, Y, psi)
-        c, cl = plot_force_magnitude(ax, X, Y, Fx, Fy)
+        c, cl, cr = plot_force_magnitude(ax, X, Y, Fx, Fy)
         plot_force_direction(ax, X, Y, Fx, Fy)
-        if 0:
+        if draw_bike:
             bdrawing = BicycleDrawing2D(ax, b)
             bdrawing.show_roll_indicator = False
             bdrawing.fcolors = ["0"] * len(bdrawing.fcolors)
@@ -169,11 +185,10 @@ def main():
     cbar.ax.set_yticklabels(
         ("0", r"$\frac{v_\mathrm{d}}{2}$", r"$v_\mathrm{d}$")
     )
-    # cbar.add_lines(clw)
-    cbar.add_lines(cl)
 
-    fig.supxlabel(r"$x_\mathrm{a,b}$ [m]", y=0.0, x=0.51, fontsize=8)
-    fig.supylabel(r"$y_\mathrm{a,b}$ [m]", fontsize=8)
+    cbar.add_lines(cr)
+    fig.supxlabel(r"$x_{a,b}$ [m]", y=-0.01, x=0.51, fontsize=8)
+    fig.supylabel(r"$y_{a,b}$ [m]", fontsize=8)
 
     export_to_pgf(
         fig, os.path.join(outdir, "repulsive_force_fields"), save=save
