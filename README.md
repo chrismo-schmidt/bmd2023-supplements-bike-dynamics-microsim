@@ -1,15 +1,21 @@
-Essential bicycle dynamics for microscopic simulation - Experiments & Plots
+Essential bicycle dynamics for microscopic simulation - Experiments & plots
 ==============================
 
-Simulation experiments and plots of our publication "Essential bicycle dynamics for microscopic simulation - An example using the social force model."
+Simulation experiments and plots of our publication "Essential bicycle dynamics for microscopic simulation - An example using the social force model." (Schmidt et al., 2023). 
 
-**test_scenarios.py:** Simulation experiments and Figures 8 - 10 and Table 1.
+Three python scripts create the content of our publication:
 
-**stablility_limits_symbolic.py:** Figures 5 and 6 and verification of the equations of the paper. 
+- **test_scenarios.py:** Simulation experiments, Figures 8 - 10, and Table 1.
 
-**repulsive_force_fileds.py:** Figure 3.
+- **stablility_limits_symbolic.py:** Figures 5, 6 and verification of the equations of the paper. 
+
+- **repulsive_force_fileds.py:** Figure 3.
+
+This software was created in the context of my PhD project at Delft University of Technology. 
 
 ## Requirements
+
+Executing the scripts requires the following modules / packages. They are available from their own repositories or come bundled with the archived version of this software available at the 4TU.ResearchData repository.
 
 - Python 3.11
 
@@ -21,9 +27,9 @@ Simulation experiments and plots of our publication "Essential bicycle dynamics 
 
 ## Installation
 
-1. Install the requirements in a new virtual environment
+1. Install the requirements in a new virtual environment of your preference. 
 
-2. Run the scripts.
+2. Run the scripts. 
 
 ## Authors
 
@@ -35,8 +41,12 @@ License
 
 This software is licensed under the terms of the MIT License.
 
+### Additional Material
+
+An archived version of this code can be found at the 4TU.ResearchData repository.
+
 ## Citation
 
 If you use this software in your research, please cite it in your publications as:
 
-Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the Social Force Model [preprint]. The Evolving Scholar - BMD 2023, 5th Edition. https://doi.org/10.59490/65037d08763775ba4854da53
+Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the Social Force Model. The Evolving Scholar - BMD 2023, 5th Edition. DOI: [10.59490/65a5124da90ad4aecf0ab147](https://doi.org/10.59490/65a5124da90ad4aecf0ab147)

@@ -13,10 +13,12 @@ Table 1.
 
 Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential 
 Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the 
-Social Force Model [preprint]. The Evolving Scholar - BMD 2023, 5th Edition. 
-https://doi.org/10.59490/65037d08763775ba4854da53
+Social Force Model. The Evolving Scholar - BMD 2023, 5th Edition. 
+https://doi.org/10.59490/65a5124da90ad4aecf0ab147
 
-Requires cyclistsocialforce>=1.1.0
+Requires cyclistsocialforce = 1.1.1 (https://github.com/chrismo-schmidt/
+                                     cyclistsocialforce/releases/tag/
+                                     v1.1.1-bmd2023proceedingspaper-review)
 Requires pypaperutils (https://github.com/chrismo-schmidt/pypaperutils)
 Requires pytrafficutils (https://github.com/chrismo-schmidt/pytrafficutils)
 

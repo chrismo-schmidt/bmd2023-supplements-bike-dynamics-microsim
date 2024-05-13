@@ -14,11 +14,13 @@ arrows.", for Schmidt et al. (2023).
 
 Schmidt, C., Dabiri, A., Schulte, F., Happee, R. & Moore, J. (2023). Essential 
 Bicycle Dynamics for Microscopic Traffic Simulation: An Example Using the 
-Social Force Model [preprint]. The Evolving Scholar - BMD 2023, 5th Edition. 
-https://doi.org/10.59490/65037d08763775ba4854da53
+Social Force Model. The Evolving Scholar - BMD 2023, 5th Edition. 
+https://doi.org/10.59490/65a5124da90ad4aecf0ab147
 
 
-Requires cyclistsocialforce>=1.1.0
+Requires cyclistsocialforce = 1.1.1 (https://github.com/chrismo-schmidt/
+                                     cyclistsocialforce/releases/tag/
+                                     v1.1.1-bmd2023proceedingspaper-review)
 Requires pypaperutils (https://github.com/chrismo-schmidt/pypaperutils)
 
 Usage: $ python repulsive_force_fields.py
@@ -108,7 +110,7 @@ def plot_force_magnitude(ax, X, Y, Fx, Fy):
         levels=np.arange(0, 5.5, 1),
         extend="max",
         colors="white",
-        linewidths=0.1,
+        linewidths=0.5,
     )
     cr = ax.contour(
         c,
