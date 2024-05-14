@@ -1,4 +1,4 @@
-Essential bicycle dynamics for microscopic simulation - experiments & plots
+Supplementary Material of "Essential Bicycle Dynamics for Microscopic Simulation" - Experiments & Plots
 ==============================
 
 <img title="a title" src="file:///U:/PhDConnectedVRU/Publications/P2_BicycleDynamics_BMD2023/experiments/figures/example/test-scenarios_encroachemnt-subfig.png" alt="Alt text" width="390">
