@@ -5,6 +5,9 @@
 *.gif
 *.pdf
 
+# archives
+*.zip
+
 # tumbnails
 Thumbs.db
 
@@ -13,6 +16,7 @@ figures/bugfix_const-ki/
 figures/revision/
 figures/initial_submission/
 archived-version-4tu/
+bmd2023-supplements-bike-dynamics-microsim-4tu/
 
 # preview image
 !figures/example/test-scenarios_encroachemnt-subfig.png
