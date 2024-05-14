@@ -1,7 +1,7 @@
 Supplementary Material of "Essential Bicycle Dynamics for Microscopic Simulation" - Experiments & Plots
 ==============================
 
-<img title="*Snippet of Fig. 9 in Schmidt et al. (2023).*" src="https://github.com/chrismo-schmidt/bmd2023-supplements-bike-dynamics-microsim/blob/main/figures/example/test-scenarios_encroachemnt-subfig.png" alt="Birds-eye view of three cyclists in an encroachment conflict as simulated by the cyclist social force model" width="500">
+<img title="*Snippet of Fig. 9 in Schmidt et al. (2023).*" src="./figures/example/test-scenarios_encroachemnt-subfig.png" alt="Birds-eye view of three cyclists in an encroachment conflict as simulated by the cyclist social force model" width="500">
 
 Simulation experiments and plots of our publication "Essential bicycle dynamics for microscopic simulation - An example using the social force model." (Schmidt et al., 2023). 
 
@@ -51,7 +51,7 @@ This software is licensed under the terms of the MIT License.
 
 ## Additional Material
 
-An archived version of this code can be found at the 4TU.ResearchData repository.
+An archived version of this code can be found at the 4TU.ResearchData repository under with the DOI [10.4121/574cd504-ad56-4234-8d48-c10931d13204](https://doi.org/10.4121/574cd504-ad56-4234-8d48-c10931d13204)
 
 ## Citation
 
