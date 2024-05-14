@@ -5,9 +5,14 @@
 *.gif
 *.pdf
 
+# tumbnails
 Thumbs.db
 
+# specific folders
 figures/bugfix_const-ki/
+
+# preview image
+!figures/review/test-scenarios_encroachemnt-subfig.png
 
 # Distribution / packaging
 .Python
