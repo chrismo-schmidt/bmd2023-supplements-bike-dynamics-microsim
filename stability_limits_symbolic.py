@@ -48,7 +48,7 @@ plt.close("all")
 
 tudcolors = TUDcolors()
 
-outdir = "./figures/review/"
+outdir = "./figures/"
 
 analyse_inner_loop = True
 analyse_outer_loop = True

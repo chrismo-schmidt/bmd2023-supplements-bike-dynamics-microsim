@@ -52,7 +52,7 @@ black = "black"
 gray = "gray"
 
 # output directory
-outdir = "./figures/review/"
+outdir = "./figures/"
 
 
 def scenario_passing(fig, axes, unstable):

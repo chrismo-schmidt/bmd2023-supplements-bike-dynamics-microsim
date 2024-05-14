@@ -10,10 +10,12 @@ Thumbs.db
 
 # specific folders
 figures/bugfix_const-ki/
+figures/revision/
+figures/initial_submission/
 archived-version-4tu/
 
 # preview image
-!figures/review/test-scenarios_encroachemnt-subfig.png
+!figures/example/test-scenarios_encroachemnt-subfig.png
 
 # Distribution / packaging
 .Python

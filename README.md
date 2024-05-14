@@ -1,13 +1,9 @@
 Essential bicycle dynamics for microscopic simulation - experiments & plots
 ==============================
 
-
-
-<img title="a title" src="file:///U:/PhDConnectedVRU/Publications/P2_BicycleDynamics_BMD2023/experiments/figures/review/test-scenarios_encroachemnt-subfig.png" alt="Alt text" width="390">
+<img title="a title" src="file:///U:/PhDConnectedVRU/Publications/P2_BicycleDynamics_BMD2023/experiments/figures/example/test-scenarios_encroachemnt-subfig.png" alt="Alt text" width="390">
 
     *Snippet of Fig. 9 in Schmidt et al. (2023).*
-
-
 
 Simulation experiments and plots of our publication "Essential bicycle dynamics for microscopic simulation - An example using the social force model." (Schmidt et al., 2023). 
 
